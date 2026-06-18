@@ -19,7 +19,7 @@ public class BaseTest {
      * Инициализация Selenide с настройками
      */
     @Step("Настройка Selenide")
-    public void configureSelenide() {
+    public void configureSelenide(){
         Configuration.browser = ConfigProvider.BROWSER;
         Configuration.baseUrl = ConfigProvider.URL;
         Configuration.browserSize = ConfigProvider.BROWSER_SIZE;
