@@ -28,12 +28,12 @@ public class BaseTest {
         Configuration.webdriverLogsEnabled = false;
         Configuration.timeout=ConfigProvider.SELENIDE_TIMEOUT;
     }
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     static void setupAllureReports() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Step("Открыть тестовый стенд")
     public void performSetupAndNavigate() {
         configureSelenide();
@@ -42,7 +42,7 @@ public class BaseTest {
 //        mainPage = loginPage.logIn(ConfigProvider.LOGIN, ConfigProvider.PASS);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         Selenide.closeWebDriver();
     }
