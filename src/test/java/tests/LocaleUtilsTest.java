@@ -3,7 +3,7 @@ package tests;
 import org.testng.annotations.Test;
 import io.qameta.allure.*;
 
-public class LocaleUtilsTest extends BaseTest{
+public class LocaleUtilsTest extends BaseTest {
 
     @Test(groups = {"regression"})
     @Description("testParseLocale")
