@@ -38,6 +38,7 @@ public class BaseTest {
     public void performSetupAndNavigate() {
         configureSelenide();
         System.out.println("User: " + ConfigProvider.LOGIN + "  password: " + ConfigProvider.PASS);
+        System.out.println("Browser: " + ConfigProvider.BROWSER);
         Selenide.open(ConfigProvider.URL);
 //        loginPage = new LoginPage();
 //        mainPage = loginPage.logIn(ConfigProvider.LOGIN, ConfigProvider.PASS);
