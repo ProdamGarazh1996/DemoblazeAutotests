@@ -13,10 +13,27 @@ pipeline {
     }
 
     parameters {
-        choice(
+        activeChoice(
             name: 'BRANCH_NAME',
-            choices: ['main', 'develop', 'feature/my-feature'],  // перечисли свои ветки
-            description: 'Выбери ветку для запуска тестов'
+            description: 'Выбери ветку для запуска тестов',
+            choiceType: 'PT_SINGLE_SELECT',
+            script: [
+                $class: 'GroovyScript',
+                script: [
+                    $class: 'SecureGroovyScript',
+                    sandbox: false,
+                    script: '''
+                        def branches = []
+                        def cmd = "git ls-remote --heads git@github.com:ProdamGarazh1996/DemoblazeAutotests.git"
+                        def proc = cmd.execute()
+                        proc.text.eachLine { line ->
+                            def match = line =~ /refs\\/heads\\/(.+)/
+                            if (match) branches << match[0][1]
+                        }
+                        return branches
+                    '''
+                ]
+            ]
         )
     }
 
@@ -27,7 +44,7 @@ pipeline {
     stages {
         stage('CHECKOUT') {
             steps {
-                git branch: "${params.BRANCH_NAME}",   // <-- было '${BRANCH_NAME}' (не работало в обычном Pipeline)
+                git branch: "${params.BRANCH_NAME}",
                     credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
                     url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
             }
