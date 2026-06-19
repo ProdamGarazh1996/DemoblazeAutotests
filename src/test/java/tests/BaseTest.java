@@ -37,6 +37,7 @@ public class BaseTest {
     @Step("Открыть тестовый стенд")
     public void performSetupAndNavigate() {
         configureSelenide();
+        System.out.println("User: " + ConfigProvider.LOGIN + "  password: " + ConfigProvider.PASS);
         Selenide.open(ConfigProvider.URL);
 //        loginPage = new LoginPage();
 //        mainPage = loginPage.logIn(ConfigProvider.LOGIN, ConfigProvider.PASS);

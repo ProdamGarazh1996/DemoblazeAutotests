@@ -32,6 +32,7 @@ pipeline {
 
     environment {
         MAVEN_OPTS = '-Dfile.encoding=UTF-8'
+        DEMOBLAZE_CREDS = credentials('demoblaze-user')
     }
 
     stages {
@@ -51,6 +52,8 @@ pipeline {
             steps {
                 bat """mvn test \
                     -Dbrowser=${params.BROWSER} \
+                    -Dlogin=%DEMOBLAZE_CREDS_USR% \
+                    -Dpass=%DEMOBLAZE_CREDS_PSW% \
                     ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"""
             }
         }
