@@ -15,7 +15,7 @@ pipeline {
     parameters {
         choice(
             name: 'BRANCH_NAME',
-            choices: ['main'],  // перечисли свои ветки
+            choices: ['main'],
             description: 'Выбери ветку для запуска тестов'
         )
         choice(
@@ -37,7 +37,7 @@ pipeline {
     stages {
         stage('CHECKOUT') {
             steps {
-                git branch: "${params.BRANCH_NAME}",   // <-- было '${BRANCH_NAME}' (не работало в обычном Pipeline)
+                git branch: "${params.BRANCH_NAME}",
                     credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
                     url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
             }
