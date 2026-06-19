@@ -17,6 +17,8 @@ public interface ConfigProvider {
 
     // URL для используемых стендов
     String URL = readConfig().getString("url");
+
+    //Директория где хранятся отчеты
     String REPORTS_FOLDER = readConfig().getString("reportsFolder");
 
     // Настройки Selenide
@@ -30,5 +32,4 @@ public interface ConfigProvider {
     // Данные для авторизации
     String LOGIN = readConfig().getString("usersParams.testUser.login");
     String PASS = readConfig().getString("usersParams.testUser.pass");
-    String USER_FIO = readConfig().getString("usersParams.testUser.fio");
 }
