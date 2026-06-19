@@ -43,12 +43,13 @@ pipeline {
 
     environment {
         MAVEN_OPTS = '-Dfile.encoding=UTF-8'
+        BRANCH = "${params.BRANCH_NAME ?: 'main'}"
     }
 
     stages {
         stage('CHECKOUT') {
             steps {
-                git branch: "${params.BRANCH_NAME}",
+                git branch: "${env.BRANCH}",
                     credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
                     url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
             }
