@@ -20,7 +20,9 @@ public interface ConfigProvider {
     String REPORTS_FOLDER = readConfig().getString("reportsFolder");
 
     // Настройки Selenide
-    String BROWSER = readConfig().getString("browser");
+    String BROWSER = System.getProperty("browser") != null
+            ? System.getProperty("browser")
+            : readConfig().getString("browser");
     Boolean HEADLESS = Boolean.parseBoolean(readConfig().getString("headless"));
     String BROWSER_SIZE = readConfig().getString("browserSize");
     Long SELENIDE_TIMEOUT = Long.parseLong(readConfig().getString("timeout"));

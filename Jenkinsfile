@@ -23,6 +23,11 @@ pipeline {
             choices: ['all', 'regression'],
             description: 'Выбери группу тестов для запуска (all — запустить все тесты)'
         )
+        choice(
+            name: 'BROWSER',
+            choices: ['chrome', 'firefox'],
+            description: 'Выбери браузер для запуска тестов'
+        )
     }
 
     environment {
@@ -44,7 +49,9 @@ pipeline {
         }
         stage('TEST') {
             steps {
-                 bat "mvn test ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"
+                bat """mvn test \
+                    -Dbrowser=${params.BROWSER} \
+                    ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"""
             }
         }
     }
