@@ -13,43 +13,21 @@ pipeline {
     }
 
     parameters {
-        activeChoice(
+        choice(
             name: 'BRANCH_NAME',
-            description: 'Выбери ветку для запуска тестов',
-            choiceType: 'PT_SINGLE_SELECT',
-            script: [
-                $class: 'GroovyScript',
-                script: [
-                    $class: 'SecureGroovyScript',
-                    sandbox: false,
-                    script: '''
-                    def branches = []
-                    try {
-                      def cmd = "git ls-remote --heads git@github.com:ProdamGarazh1996/DemoblazeAutotests.git"
-                      def proc = cmd.execute()
-                      proc.text.eachLine { line ->
-                      def match = line =~ /refs\\/heads\\/(.+)/
-                      if (match) branches << match[0][1]
-                      }
-                    } catch (Exception e) {
-                      branches = ['main']
-                    }
-                    return branches ?: ['main']
-                    '''
-                ]
-            ]
+            choices: ['main'],  // перечисли свои ветки
+            description: 'Выбери ветку для запуска тестов'
         )
     }
 
     environment {
         MAVEN_OPTS = '-Dfile.encoding=UTF-8'
-        BRANCH = "${params.BRANCH_NAME ?: 'main'}"
     }
 
     stages {
         stage('CHECKOUT') {
             steps {
-                git branch: "${env.BRANCH}",
+                git branch: "${params.BRANCH_NAME}",   // <-- было '${BRANCH_NAME}' (не работало в обычном Pipeline)
                     credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
                     url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
             }
