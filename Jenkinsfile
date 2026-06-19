@@ -23,14 +23,18 @@ pipeline {
                     $class: 'SecureGroovyScript',
                     sandbox: false,
                     script: '''
-                        def branches = []
-                        def cmd = "git ls-remote --heads git@github.com:ProdamGarazh1996/DemoblazeAutotests.git"
-                        def proc = cmd.execute()
-                        proc.text.eachLine { line ->
-                            def match = line =~ /refs\\/heads\\/(.+)/
-                            if (match) branches << match[0][1]
-                        }
-                        return branches
+                    def branches = []
+                    try {
+                      def cmd = "git ls-remote --heads git@github.com:ProdamGarazh1996/DemoblazeAutotests.git"
+                      def proc = cmd.execute()
+                      proc.text.eachLine { line ->
+                      def match = line =~ /refs\\/heads\\/(.+)/
+                      if (match) branches << match[0][1]
+                      }
+                    } catch (Exception e) {
+                      branches = ['main']
+                    }
+                    return branches ?: ['main']
                     '''
                 ]
             ]
@@ -44,10 +48,9 @@ pipeline {
     stages {
         stage('CHECKOUT') {
             steps {
-            def branch = params.BRANCH_NAME?.trim() ? params.BRANCH_NAME.trim() : 'main'
-            git branch: branch,
-                credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
-                url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
+                git branch: "${params.BRANCH_NAME}",
+                    credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
+                    url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
             }
         }
         stage('CLEAN') {
