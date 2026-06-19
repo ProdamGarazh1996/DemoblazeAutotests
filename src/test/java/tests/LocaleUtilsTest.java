@@ -8,6 +8,7 @@ public class LocaleUtilsTest extends BaseTest {
     @Test(groups = {"regression"})
     @Description("testParseLocale")
     public void testParseLocale() {
+
         System.out.println("testParseLocale");
     }
 
