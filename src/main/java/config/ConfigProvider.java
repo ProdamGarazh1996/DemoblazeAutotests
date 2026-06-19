@@ -30,6 +30,10 @@ public interface ConfigProvider {
     Long SELENIDE_TIMEOUT = Long.parseLong(readConfig().getString("timeout"));
 
     // Данные для авторизации
-    String LOGIN = readConfig().getString("usersParams.testUser.login");
-    String PASS = readConfig().getString("usersParams.testUser.pass");
+    String LOGIN = System.getProperty("login") != null
+            ? System.getProperty("login")
+            : readConfig().getString("usersParams.testUser.login");
+    String PASS = System.getProperty("pass") != null
+            ? System.getProperty("pass")
+            : readConfig().getString("usersParams.testUser.pass");
 }
