@@ -18,6 +18,11 @@ pipeline {
             choices: ['main'],  // перечисли свои ветки
             description: 'Выбери ветку для запуска тестов'
         )
+        choice(
+            name: 'TEST_GROUPS',
+            choices: ['all', 'regression'],
+            description: 'Выбери группу тестов для запуска (all — запустить все тесты)'
+        )
     }
 
     environment {
@@ -39,7 +44,11 @@ pipeline {
         }
         stage('TEST') {
             steps {
-                bat "mvn test"
+                 if (params.TEST_GROUPS == 'all') {
+                     bat "mvn test"
+                 } else {
+                     bat "mvn test -Dgroups=${params.TEST_GROUPS}"
+                 }
             }
         }
     }
