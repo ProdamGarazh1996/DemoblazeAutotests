@@ -56,8 +56,8 @@ pipeline {
                 )]) {
                     bat """mvn test \
                         -Dbrowser=${params.BROWSER} \
-                        "-login=%USR%" \
-                        "-pass=%PSW%" \
+                        "-Dlogin=%USR%" \
+                        "-Dpass=%PSW%" \
                         ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"""
                 }
             }
