@@ -44,11 +44,7 @@ pipeline {
         }
         stage('TEST') {
             steps {
-                 if (params.TEST_GROUPS == 'all') {
-                     bat "mvn test"
-                 } else {
-                     bat "mvn test ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"
-                 }
+                 bat "mvn test ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"
             }
         }
     }
