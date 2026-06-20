@@ -66,7 +66,7 @@ pipeline {
                             ? '-pl ui-tests,api-tests -am'
                             : "-pl ${params.MODULE} -am"
 
-                        def groups = params.TEST_GROUPS == 'all'
+                        def groups = (params.TEST_GROUPS == 'all' || params.TEST_GROUPS == '')
                             ? ''
                             : "-Dgroups=${params.TEST_GROUPS}"
 
