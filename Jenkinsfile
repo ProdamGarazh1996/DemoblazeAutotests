@@ -15,20 +15,20 @@ pipeline {
     }
 
     parameters {
-        choice(
+        string(
             name: 'BRANCH_NAME',
-            choices: ['main'],
-            description: 'Выбери ветку для запуска тестов'
+            defaultValue: 'main',
+            description: 'Введи ветку для запуска тестов'
+        )
+        string(
+            name: 'TEST_GROUPS',
+            defaultValue: 'all',
+            description: 'Введи группу тестов (all, regression, smoke)'
         )
         choice(
             name: 'MODULE',
             choices: ['ui-tests', 'api-tests', 'all'],
             description: 'Выбери модуль для запуска'
-        )
-        choice(
-            name: 'TEST_GROUPS',
-            choices: ['all', 'regression', 'smoke'],
-            description: 'Выбери группу тестов (all — все тесты)'
         )
         choice(
             name: 'BROWSER',
