@@ -34,7 +34,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <systemPropertyVariables>
-                        <selenide.headless>false</selenide.headless>
+                        <selenide.headless>true</selenide.headless>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
