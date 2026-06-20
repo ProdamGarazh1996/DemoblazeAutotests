@@ -44,9 +44,15 @@ pipeline {
     stages {
         stage('CHECKOUT') {
             steps {
-                git branch: "${params.BRANCH_NAME}",
-                    credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
-                    url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
+        script {
+            def branch = params.BRANCH_NAME.trim() == ''
+                ? 'main'
+                : params.BRANCH_NAME.trim()
+
+            git branch: "${branch}",
+                credentialsId: 'b7091f56-1b3d-4643-ae6b-c9f616ede5e6',
+                url: 'git@github.com:ProdamGarazh1996/DemoblazeAutotests.git'
+        }
             }
         }
         stage('CLEAN') {
