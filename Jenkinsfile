@@ -9,8 +9,8 @@ pipeline {
 
     triggers {
         parameterizedCron('''
-            */50 * * * * % MODULE=ui-tests;  TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
-            */50 * * * * % MODULE=api-tests; TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
+            H/50 * * * * % MODULE=ui-tests;  TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
+            H/50 * * * * % MODULE=api-tests; TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
         ''')
     }
 
@@ -27,7 +27,7 @@ pipeline {
         )
         choice(
             name: 'TEST_GROUPS',
-            choices: ['all', 'regression'],
+            choices: ['all', 'regression', 'smoke'],
             description: 'Выбери группу тестов (all — все тесты)'
         )
         choice(
