@@ -17,6 +17,7 @@ public interface ConfigProvider {
 
     // URL для используемых стендов
     String URL = readConfig().getString("url");
+    String API_URL = readConfig().getString("api_url");
 
     //Директория где хранятся отчеты
     String REPORTS_FOLDER = readConfig().getString("reportsFolder");

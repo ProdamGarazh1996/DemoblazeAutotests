@@ -8,8 +8,10 @@ pipeline {
     }
 
     triggers {
-        cron 'H/50 * * * *'
-        pollSCM 'H/50 * * * *'
+        parameterizedCron('''
+            */10 * * * * % MODULE=ui-tests;  TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
+            */5 * * * * % MODULE=api-tests; TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
+        ''')
     }
 
     parameters {
@@ -19,14 +21,19 @@ pipeline {
             description: 'Выбери ветку для запуска тестов'
         )
         choice(
+            name: 'MODULE',
+            choices: ['ui-tests', 'api-tests', 'all'],
+            description: 'Выбери модуль для запуска'
+        )
+        choice(
             name: 'TEST_GROUPS',
             choices: ['all', 'regression'],
-            description: 'Выбери группу тестов для запуска (all — запустить все тесты)'
+            description: 'Выбери группу тестов (all — все тесты)'
         )
         choice(
             name: 'BROWSER',
             choices: ['chrome', 'firefox'],
-            description: 'Выбери браузер для запуска тестов'
+            description: 'Выбери браузер (только для ui-tests)'
         )
     }
 
@@ -54,11 +61,25 @@ pipeline {
                     usernameVariable: 'USR',
                     passwordVariable: 'PSW'
                 )]) {
-                    bat """mvn test \
-                        -Dbrowser=${params.BROWSER} \
-                        "-Dlogin=%USR%" \
-                        "-Dpass=%PSW%" \
-                        ${params.TEST_GROUPS == 'all' ? '' : '-Dgroups=' + params.TEST_GROUPS}"""
+                    script {
+                        def mavenModule = params.MODULE == 'all'
+                            ? '-pl ui-tests,api-tests -am'
+                            : "-pl ${params.MODULE} -am"
+
+                        def groups = params.TEST_GROUPS == 'all'
+                            ? ''
+                            : "-Dgroups=${params.TEST_GROUPS}"
+
+                        def browser = params.MODULE == 'api-tests'
+                            ? ''
+                            : "-Dbrowser=${params.BROWSER}"
+
+                        bat """mvn test ${mavenModule} \
+                            ${browser} \
+                            "-Dlogin=%USR%" \
+                            "-Dpass=%PSW%" \
+                            ${groups}"""
+                    }
                 }
             }
         }
@@ -66,7 +87,10 @@ pipeline {
 
     post {
         always {
-            allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+            allure includeProperties: false, jdk: '', results: [
+                [path: 'ui-tests/target/allure-results'],
+                [path: 'api-tests/target/allure-results']
+            ]
         }
     }
 }
