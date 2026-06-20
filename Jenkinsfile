@@ -27,7 +27,7 @@ pipeline {
         )
         choice(
             name: 'MODULE',
-            choices: ['ui-tests', 'api-tests', 'all'],
+            choices: ['all', 'ui-tests', 'api-tests'],
             description: 'Выбери модуль для запуска'
         )
         choice(
