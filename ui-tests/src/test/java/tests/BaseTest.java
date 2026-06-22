@@ -11,9 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
-//    private LoginPage loginPage;
-//    public MainPage mainPage;
-
 
     /**
      * Инициализация Selenide с настройками
@@ -30,7 +27,7 @@ public class BaseTest {
     }
     @BeforeTest(alwaysRun = true)
     static void setupAllureReports() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -38,11 +35,10 @@ public class BaseTest {
     public void performSetupAndNavigate() {
         configureSelenide();
         Selenide.open(ConfigProvider.URL);
-//        loginPage = new LoginPage();
-//        mainPage = loginPage.logIn(ConfigProvider.LOGIN, ConfigProvider.PASS);
     }
 
     @AfterMethod(alwaysRun = true)
+    @Step("Закрыть тестовый стенд")
     public void tearDown() {
         Selenide.closeWebDriver();
     }
