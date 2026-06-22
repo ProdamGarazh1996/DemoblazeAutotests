@@ -38,6 +38,7 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
+    @Step("Закрыть тестовый стенд")
     public void tearDown() {
         Selenide.closeWebDriver();
     }
