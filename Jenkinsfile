@@ -9,8 +9,8 @@ pipeline {
 
     triggers {
         parameterizedCron('''
-            H/50 * * * * % MODULE=ui-tests;  TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
-            H/50 * * * * % MODULE=api-tests; TEST_GROUPS=regression; BROWSER=chrome;   BRANCH_NAME=main
+            H/15 * * * * % MODULE=ui-tests; BROWSER=firefox;   BRANCH_NAME=main
+            H/20 * * * * % MODULE=api-tests; BROWSER=firefox;   BRANCH_NAME=main
         ''')
     }
 
