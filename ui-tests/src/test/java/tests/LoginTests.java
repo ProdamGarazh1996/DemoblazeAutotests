@@ -21,10 +21,4 @@ public class LoginTests extends BaseTest {
         //3. Проверить что пользователь авторизовался под нужным пользователем
         LoginSteps.checkUserLoginInHeader(userUI);
     }
-
-    @Test(groups = {"smoke"})
-    @Description("uiTest2")
-    public void uiTest2() {
-        System.out.println("uiTest2");
-    }
 }
