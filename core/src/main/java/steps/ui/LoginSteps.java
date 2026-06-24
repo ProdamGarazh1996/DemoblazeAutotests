@@ -1,6 +1,5 @@
 package steps.ui;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import objects.user.UserUI;
 import pages.LoginPage;
@@ -32,10 +31,5 @@ public class LoginSteps {
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
         clickOnLoginButton();
-    }
-
-    public static void checkUserLoginInHeader(UserUI userUI) {
-        Allure.addAttachment("Логин пользователя", userUI.getLogin());
-        loginPage.checkUserLoggedIn(userUI.getLogin());
     }
 }

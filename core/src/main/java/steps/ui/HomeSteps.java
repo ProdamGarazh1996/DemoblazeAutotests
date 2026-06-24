@@ -1,6 +1,8 @@
 package steps.ui;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import objects.user.UserUI;
 import pages.HomePage;
 import utils.AttachmentUtils;
 import static com.codeborne.selenide.Selenide.page;
@@ -21,6 +23,21 @@ public class HomeSteps {
         AttachmentUtils.attachPageSource();
         homePage.clickOnCategory("Monitors");
         homePage.checkItemInCategoryExists("Apple monitor 24");
+        AttachmentUtils.attachScreenshotToStep();
+        AttachmentUtils.attachPageSource();
+    }
+
+    public static void checkUserLoginInHeader(UserUI userUI) {
+        Allure.addAttachment("Логин пользователя", userUI.getLogin());
+        homePage.checkUserLoggedIn(userUI.getLogin());
+    }
+
+    public static void logout() {
+        homePage.clickOnMenuItem("Log out");
+    }
+
+    public static void checkMenuItemExists(String menuItem) {
+        homePage.checkMenuItemExists(menuItem);
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
     }

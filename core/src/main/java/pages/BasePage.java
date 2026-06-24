@@ -17,6 +17,10 @@ public class BasePage {
         headerComponent.clickOnMenuItem(menuItem);
     }
 
+    public void checkMenuItemExists(String menuItem) {
+        headerComponent.checkMenuItemExists(menuItem);
+    }
+
     @Step("Заполнить поле ввода с id \"{id}\" значением \"{value}\"")
     public void fillInputField(String id, String value) {
         $x(String.format(INPUT_BY_ID_XPATH, id)).setValue(value);
