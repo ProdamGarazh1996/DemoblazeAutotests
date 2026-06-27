@@ -1,7 +1,7 @@
 package tests;
 
 import io.qameta.allure.Description;
-import objects.user.CategoryItemUI;
+import objects.CategoryItemUI;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.ui.CategoryItemSteps;

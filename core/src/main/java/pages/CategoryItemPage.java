@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -19,6 +20,15 @@ public class CategoryItemPage extends BasePage {
         }
     }
 
+    @Step("Кликнуть по кнопке добавления товара в корзину")
+    public void clickAddToCartButton() {
+        $x(ADD_TO_CART_BUTTON_XPATH).click();
+    }
+
+    @Step("Подтведить добавление товара в коризину закрыв всплывающее окно")
+    public void confirmAddToCartAction() {
+        Selenide.switchTo().alert().accept();
+    }
 
     public String getPrice() {
         return $x("//h3").getOwnText();
