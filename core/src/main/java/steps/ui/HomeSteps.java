@@ -2,7 +2,7 @@ package steps.ui;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import objects.user.CategoryItemUI;
+import objects.CategoryItemUI;
 import objects.user.UserUI;
 import pages.HomePage;
 import utils.AttachmentUtils;
