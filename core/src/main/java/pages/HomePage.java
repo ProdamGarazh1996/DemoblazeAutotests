@@ -24,5 +24,9 @@ public class HomePage extends BasePage {
         }
     }
 
+    @Step("Кликнуть на товар с названием \"{itemName}\"")
+    public void clickOnItem(String itemName) {
+        $x(String.format(ITEM_BY_ID_XPATH, itemName)).click();
+    }
 
 }

@@ -12,7 +12,7 @@ public class LoginTests extends BaseTest {
 
     UserUI userUI = UserUIGenerator.generateUserUIForLogIn();
 
-    @Test(description = "Проверка успешной авторизации пользователя", groups = {"regression", "test-1"})
+    @Test(description = "Проверка успешной авторизации пользователя", groups = {"test-1"})
     @Description("Проверка успешной авторизации пользователя")
     public void testSuccessfulLogin() {
         //1. Нажать на кнопку логина
@@ -23,7 +23,7 @@ public class LoginTests extends BaseTest {
         HomeSteps.checkUserLoginInHeader(userUI);
     }
 
-    @Test(description = "Проверка успешного выхода пользователя", groups = {"regression", "test-3"})
+    @Test(description = "Проверка успешного выхода пользователя", groups = {"test-3"})
     @Description("Проверка успешного выхода пользователя")
     public void testSuccessfulLogout() {
         //1. Нажать на кнопку логина

@@ -2,6 +2,7 @@ package steps.ui;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import objects.user.CategoryItemUI;
 import objects.user.UserUI;
 import pages.HomePage;
 import utils.AttachmentUtils;
@@ -25,6 +26,14 @@ public class HomeSteps {
         homePage.checkItemInCategoryExists("Apple monitor 24");
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
+    }
+
+
+    @Step("Осуществить основные шаги по навигации в карточку нужного товара")
+    public static void navigateToCategoryItem(CategoryItemUI categoryItemUI) {
+        homePage.clickOnCategory(categoryItemUI.getCategory());
+        homePage.checkItemInCategoryExists(categoryItemUI.getName());
+        homePage.clickOnItem(categoryItemUI.getName());
     }
 
     public static void checkUserLoginInHeader(UserUI userUI) {
