@@ -10,6 +10,7 @@ import java.util.Date;
 @ToString
 public class ContactInfoUI {
     String name;
+    String email;
     String country;
     String city;
     String creditCard;
