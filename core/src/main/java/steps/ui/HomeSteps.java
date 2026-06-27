@@ -1,8 +1,10 @@
 package steps.ui;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import objects.CategoryItemUI;
+import objects.contact.ContactInfoUI;
 import objects.user.UserUI;
 import pages.HomePage;
 import utils.AttachmentUtils;
@@ -49,5 +51,17 @@ public class HomeSteps {
         homePage.checkMenuItemExists(menuItem);
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
+    }
+
+    @Step("Заполнить форму контакта и нажать на отправку сообщения")
+    public static void fillContactFormAndClickSendMessage(ContactInfoUI contactInfoUI) {
+        Faker faker = new Faker();
+        homePage.fillInputField("recipient-email", contactInfoUI.getEmail());
+        homePage.fillInputField("recipient-name", contactInfoUI.getName());
+        homePage.fillTextAreaField("message-text", faker.lorem().sentence());
+        AttachmentUtils.attachScreenshotToStep();
+        AttachmentUtils.attachPageSource();
+        homePage.clickOnButton("Send message");
+        homePage.checkMessageAndClosePopup("Thanks for the message!!");
     }
 }

@@ -32,6 +32,6 @@ public class CategoryItemSteps {
         categoryItemPage.clickAddToCartButton();
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
-        categoryItemPage.confirmAddToCartAction();
+        categoryItemPage.checkMessageAndClosePopup("Product added");
     }
 }

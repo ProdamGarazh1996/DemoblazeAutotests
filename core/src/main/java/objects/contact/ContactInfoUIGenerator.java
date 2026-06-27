@@ -12,12 +12,13 @@ public class ContactInfoUIGenerator {
     public static ContactInfoUI generateContactInfoUI() {
         Faker faker = new Faker();
         String name = faker.name().fullName();
+        String email = faker.internet().emailAddress();
         String country = faker.country().name();
         String city = faker.country().capital();
         String creditCard = faker.finance().creditCard();
         Date randomDate = DateUtils.getRandomDate();
         int year = randomDate.toInstant().atZone(ZoneId.systemDefault()).getYear();
         String month = DateUtils.getMonthByDate(randomDate);
-        return new ContactInfoUI(name, country, city, creditCard, month, Integer.toString(year), randomDate);
+        return new ContactInfoUI(name, email, country, city, creditCard, month, Integer.toString(year), randomDate);
     }
 }

@@ -8,7 +8,6 @@ import objects.contact.ContactInfoUI;
 import org.testng.asserts.SoftAssert;
 import pages.CartPage;
 import utils.AttachmentUtils;
-import utils.DateUtils;
 
 public class CartSteps {
     static CartPage cartPage = new CartPage();
@@ -64,7 +63,6 @@ public class CartSteps {
         String name = purchaseInfo.substring(purchaseInfo.indexOf("Name:") + 6, purchaseInfo.indexOf("\n"));
         purchaseInfo = purchaseInfo.substring(purchaseInfo.indexOf("\n") + 1);
         String dateString = purchaseInfo.substring(purchaseInfo.indexOf("Date:") + 7);
-        String expectedDate = DateUtils.getCurrentLocalDateTime().getYear() + "/" + contactInfoUI.getMonth() + "/" + contactInfoUI.getYear();
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
         Allure.addAttachment("Ожидаемая контактная информация", new Gson().toJson(contactInfoUI));
