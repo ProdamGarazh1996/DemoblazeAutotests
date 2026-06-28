@@ -16,12 +16,12 @@ public class LoginSteps {
 
     @Step("Заполнить все поля авторизации")
     public static void fillFields(UserUI userUI) {
-        loginPage.fillLogin(userUI.getLogin());
-        loginPage.fillPassword(userUI.getPassword());
+        loginPage.fillInputField("loginusername", userUI.getLogin());
+        loginPage.fillInputField("loginpassword", userUI.getPassword());
     }
 
     public static void clickOnLoginButton() {
-        loginPage.clickOnLoginButton();
+        loginPage.clickOnButton("Log in");
     }
 
     @Step("Заполнить поля авторизации и кликнуть по кнопке авторизации")

@@ -10,6 +10,7 @@ public class MenuSteps {
 
     @Step("кликнуть на пункт меню \"{menuItem}\"")
     public static void clickOnMenuItem(String menuItem) {
+        homePage.checkMenuItemExists(menuItem);
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
         homePage.clickOnMenuItem(menuItem);
