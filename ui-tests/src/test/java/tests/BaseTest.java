@@ -26,6 +26,7 @@ public class BaseTest {
         Configuration.timeout=ConfigProvider.SELENIDE_TIMEOUT;
     }
     @BeforeTest(alwaysRun = true)
+    @Step("Настроить аллюр отчеты")
     static void setupAllureReports() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }

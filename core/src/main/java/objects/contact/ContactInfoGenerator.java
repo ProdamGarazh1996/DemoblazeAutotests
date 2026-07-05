@@ -6,10 +6,10 @@ import utils.DateUtils;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class ContactInfoUIGenerator {
+public class ContactInfoGenerator {
 
-    @Step("Сгенерировать объект класса UserUI из конфигов")
-    public static ContactInfoUI generateContactInfoUI() {
+    @Step("Сгенерировать объект класса ContactInfo")
+    public static ContactInfo generateContactInfo() {
         Faker faker = new Faker();
         String name = faker.name().fullName();
         String email = faker.internet().emailAddress();
@@ -19,6 +19,6 @@ public class ContactInfoUIGenerator {
         Date randomDate = DateUtils.getRandomDate();
         int year = randomDate.toInstant().atZone(ZoneId.systemDefault()).getYear();
         String month = DateUtils.getMonthByDate(randomDate);
-        return new ContactInfoUI(name, email, country, city, creditCard, month, Integer.toString(year), randomDate);
+        return new ContactInfo(name, email, country, city, creditCard, month, Integer.toString(year), randomDate);
     }
 }

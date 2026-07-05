@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserUI {
-    String login;
+public class User {
+    String username;
     String password;
 }

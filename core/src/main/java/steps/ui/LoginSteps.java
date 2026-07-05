@@ -1,7 +1,7 @@
 package steps.ui;
 
 import io.qameta.allure.Step;
-import objects.user.UserUI;
+import objects.user.User;
 import pages.LoginPage;
 import utils.AttachmentUtils;
 import static com.codeborne.selenide.Selenide.page;
@@ -15,9 +15,9 @@ public class LoginSteps {
     }
 
     @Step("Заполнить все поля авторизации")
-    public static void fillFields(UserUI userUI) {
-        loginPage.fillInputField("loginusername", userUI.getLogin());
-        loginPage.fillInputField("loginpassword", userUI.getPassword());
+    public static void fillFields(User user) {
+        loginPage.fillInputField("loginusername", user.getUsername());
+        loginPage.fillInputField("loginpassword", user.getPassword());
     }
 
     public static void clickOnLoginButton() {
@@ -25,9 +25,9 @@ public class LoginSteps {
     }
 
     @Step("Заполнить поля авторизации и кликнуть по кнопке авторизации")
-    public static void fillFieldsAndClickLogin(UserUI userUI) {
+    public static void fillFieldsAndClickLogin(User user) {
         waitLoginPopupShowUp();
-        fillFields(userUI);
+        fillFields(user);
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();
         clickOnLoginButton();

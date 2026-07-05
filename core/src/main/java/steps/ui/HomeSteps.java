@@ -3,9 +3,9 @@ package steps.ui;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import objects.CategoryItemUI;
-import objects.contact.ContactInfoUI;
-import objects.user.UserUI;
+import objects.category.CategoryItem;
+import objects.contact.ContactInfo;
+import objects.user.User;
 import pages.HomePage;
 import utils.AttachmentUtils;
 import static com.codeborne.selenide.Selenide.page;
@@ -32,15 +32,15 @@ public class HomeSteps {
 
 
     @Step("Осуществить основные шаги по навигации в карточку нужного товара")
-    public static void navigateToCategoryItem(CategoryItemUI categoryItemUI) {
-        homePage.clickOnCategory(categoryItemUI.getCategory());
-        homePage.checkItemInCategoryExists(categoryItemUI.getName());
-        homePage.clickOnItem(categoryItemUI.getName());
+    public static void navigateToCategoryItem(CategoryItem categoryItem) {
+        homePage.clickOnCategory(categoryItem.getCat());
+        homePage.checkItemInCategoryExists(categoryItem.getTitle());
+        homePage.clickOnItem(categoryItem.getTitle());
     }
 
-    public static void checkUserLoginInHeader(UserUI userUI) {
-        Allure.addAttachment("Логин пользователя", userUI.getLogin());
-        homePage.checkUserLoggedIn(userUI.getLogin());
+    public static void checkUserLoginInHeader(User user) {
+        Allure.addAttachment("Логин пользователя", user.getUsername());
+        homePage.checkUserLoggedIn(user.getUsername());
     }
 
     public static void logout() {
@@ -54,10 +54,10 @@ public class HomeSteps {
     }
 
     @Step("Заполнить форму контакта и нажать на отправку сообщения")
-    public static void fillContactFormAndClickSendMessage(ContactInfoUI contactInfoUI) {
+    public static void fillContactFormAndClickSendMessage(ContactInfo contactInfo) {
         Faker faker = new Faker();
-        homePage.fillInputField("recipient-email", contactInfoUI.getEmail());
-        homePage.fillInputField("recipient-name", contactInfoUI.getName());
+        homePage.fillInputField("recipient-email", contactInfo.getEmail());
+        homePage.fillInputField("recipient-name", contactInfo.getName());
         homePage.fillTextAreaField("message-text", faker.lorem().sentence());
         AttachmentUtils.attachScreenshotToStep();
         AttachmentUtils.attachPageSource();

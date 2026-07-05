@@ -8,7 +8,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ContactInfoUI {
+public class ContactInfo {
     String name;
     String email;
     String country;
