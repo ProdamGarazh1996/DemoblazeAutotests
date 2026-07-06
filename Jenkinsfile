@@ -32,7 +32,7 @@ pipeline {
         )
         choice(
             name: 'BROWSER',
-            choices: ['chrome', 'firefox'],
+            choices: ['firefox', 'chrome'],
             description: 'Выбери браузер (только для ui-tests)'
         )
     }
