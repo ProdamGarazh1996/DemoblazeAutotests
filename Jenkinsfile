@@ -10,7 +10,7 @@ pipeline {
     triggers {
         parameterizedCron('''
             H/15 * * * * % MODULE=ui-tests; BROWSER=firefox;   BRANCH_NAME=main
-            H/20 * * * * % MODULE=api-tests; BROWSER=firefox;   BRANCH_NAME=main
+            H/20 * * * * % MODULE=api-tests;  BRANCH_NAME=main
         ''')
     }
 
