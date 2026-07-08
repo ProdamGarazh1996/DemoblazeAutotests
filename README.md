@@ -39,10 +39,6 @@
     ```bash
     mvn clean test -pl api-tests,ui-tests -am
     ```
-    *или стандартная команда для полной сборки:*
-    ```bash
-    mvn clean test
-    ```
 
 ### 2. Параметры конфигурации запуска
 
