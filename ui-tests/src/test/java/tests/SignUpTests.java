@@ -5,10 +5,10 @@ import objects.user.User;
 import objects.user.UserGenerator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import steps.ui.HomeSteps;
-import steps.ui.LoginSteps;
-import steps.ui.MenuSteps;
-import steps.ui.SignUpSteps;
+import steps.HomeSteps;
+import steps.LoginSteps;
+import steps.MenuSteps;
+import steps.SignUpSteps;
 
 public class SignUpTests extends BaseTest {
 

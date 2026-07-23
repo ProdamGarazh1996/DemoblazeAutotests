@@ -1,4 +1,4 @@
-package steps.api;
+package steps;
 
 import api.BaseApi;
 import api.baseResponse.EmptyBaseResponse;

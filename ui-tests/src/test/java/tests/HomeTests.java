@@ -3,8 +3,8 @@ package tests;
 import io.qameta.allure.Description;
 import objects.contact.ContactInfoGenerator;
 import org.testng.annotations.Test;
-import steps.ui.HomeSteps;
-import steps.ui.MenuSteps;
+import steps.HomeSteps;
+import steps.MenuSteps;
 
 public class HomeTests extends BaseTest {
     @Test(description = "Проверка заполнения контакта", groups = {"regress", "test-6"})

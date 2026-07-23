@@ -3,11 +3,8 @@ package objects.contact;
 import lombok.*;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class ContactInfo {
     String name;
     String email;

@@ -4,9 +4,9 @@ import objects.user.User;
 import objects.user.UserGenerator;
 import org.testng.annotations.Test;
 import io.qameta.allure.*;
-import steps.ui.HomeSteps;
-import steps.ui.LoginSteps;
-import steps.ui.MenuSteps;
+import steps.HomeSteps;
+import steps.LoginSteps;
+import steps.MenuSteps;
 
 public class LoginTests extends BaseTest {
 

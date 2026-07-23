@@ -1,6 +1,6 @@
 package api.baseResponse;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class BaseResponseWithDataArray<T> {
     private Integer code;
-    @JsonProperty("Items")
+    @SerializedName("Items")
     private T[] items;
     private String message;
 }

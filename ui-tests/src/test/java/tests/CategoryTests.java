@@ -4,8 +4,8 @@ import io.qameta.allure.Description;
 import objects.category.CategoryItem;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import steps.ui.CategoryItemSteps;
-import steps.ui.HomeSteps;
+import steps.CategoryItemSteps;
+import steps.HomeSteps;
 
 public class CategoryTests extends BaseTest {
 

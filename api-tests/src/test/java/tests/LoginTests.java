@@ -7,8 +7,8 @@ import objects.ErrorMessage;
 import objects.user.User;
 import objects.user.UserGenerator;
 import org.testng.annotations.Test;
-import steps.api.LoginApiSteps;
-import steps.api.SignupApiSteps;
+import steps.LoginApiSteps;
+import steps.SignupApiSteps;
 import utils.ErrorMessageText;
 import utils.HttpStatusCode;
 

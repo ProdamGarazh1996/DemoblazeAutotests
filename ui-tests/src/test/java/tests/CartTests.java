@@ -6,10 +6,10 @@ import objects.contact.ContactInfo;
 import objects.contact.ContactInfoGenerator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import steps.ui.CartSteps;
-import steps.ui.CategoryItemSteps;
-import steps.ui.HomeSteps;
-import steps.ui.MenuSteps;
+import steps.CartSteps;
+import steps.CategoryItemSteps;
+import steps.HomeSteps;
+import steps.MenuSteps;
 
 public class CartTests extends BaseTest {
 

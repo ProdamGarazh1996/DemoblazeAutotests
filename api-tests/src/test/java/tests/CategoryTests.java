@@ -7,7 +7,7 @@ import objects.category.CategoryItem;
 import objects.category.CategoryItemGenerator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import steps.api.CategoryApiSteps;
+import steps.CategoryApiSteps;
 import java.util.ArrayList;
 
 public class CategoryTests {

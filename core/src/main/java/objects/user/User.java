@@ -2,11 +2,8 @@ package objects.user;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class User {
     String username;
     String password;

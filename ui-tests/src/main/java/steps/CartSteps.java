@@ -1,4 +1,4 @@
-package steps.ui;
+package steps;
 
 import com.google.gson.Gson;
 import io.qameta.allure.Allure;

@@ -1,4 +1,4 @@
-package steps.ui;
+package steps;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;

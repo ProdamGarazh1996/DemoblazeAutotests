@@ -5,7 +5,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class CategoryItem {
     String title;
     String cat;
